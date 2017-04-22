@@ -6,11 +6,10 @@ public class Bacterium : MonoBehaviour {
 
 	public BacteriumType type = BacteriumType.COCCUS;
 	SpriteRenderer spriteRenderer;
-	public double size = 1.0;
+	public double size = 0.0;
 
 	// Use this for initialization
 	void Start () {
-		size = 1.0;
 		spriteRenderer = this.GetComponent<SpriteRenderer>();
 
 		switch (type)

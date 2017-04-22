@@ -5,10 +5,12 @@ using UnityEngine;
 public class WorldController : MonoBehaviour {
 
 	Camera cam;
+	public static CircleCollider2D petriColl;
 
 	// Use this for initialization
 	void Start () {
 		cam = Camera.main;
+		petriColl = GameObject.Find("PetriDish").GetComponentInChildren<CircleCollider2D>();
 	}
 	
 	// Update is called once per frame

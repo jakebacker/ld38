@@ -22,11 +22,11 @@ public class UIController : MonoBehaviour {
 			return;
 		}
 		button.onClick.AddListener(delegate {
-			ButtonPressed(button.name);
+			ButtonPressed(buttonObject.GetComponent<UIType>().type);
 		});
 	}
 
-	public void ButtonPressed(string name) {
-		Debug.Log(name);
+	public void ButtonPressed(BacteriumType type) {
+		Instantiate(Resources.Load<GameObject>("prefabs/Bacteria")).GetComponent<Bacterium>().type = type;
 	}
 }

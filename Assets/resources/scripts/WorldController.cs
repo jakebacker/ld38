@@ -13,4 +13,11 @@ public class WorldController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public static void SpawnBacteria(BacteriumType type) {
+		GameObject bacteria = Instantiate(Resources.Load<GameObject>("prefabs/Bacteria"));
+		Bacterium bacteriaScript = bacteria.GetComponent<Bacterium>();
+
+		bacteriaScript.type = type;
+	}
 }

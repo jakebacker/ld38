@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+	Text micrometersAvail;
+
 	// Use this for initialization
 	void Start () {
+		micrometersAvail = GameObject.Find("Micrometers").GetComponent<Text>();
 		AddButton(GameObject.Find("SpawnCoccus"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		micrometersAvail.text = "Micrometers available: " + Values.micrometers + "μm";
 	}
 
 	public void AddButton(GameObject buttonObject) {
@@ -27,6 +30,6 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void ButtonPressed(BacteriumType type) {
-		Instantiate(Resources.Load<GameObject>("prefabs/Bacteria")).GetComponent<Bacterium>().type = type;
+		WorldController.SpawnBacteria(type);
 	}
 }

@@ -39,6 +39,15 @@ public class WorldController : MonoBehaviour {
 			locationModifier = new Vector3(2, 0, 0);
 		}
 
+		if (Application.isEditor || Debug.isDebugBuild)
+		{
+			if (Input.GetKeyDown(KeyCode.C)) // Cheat
+			{
+				Values.bacteriaPower += 100.0;
+				Values.micrometers += 100.0;
+			}
+		}
+
 		if (!((cam.gameObject.transform.position + locationModifier).x > 10 ||
 		    (cam.gameObject.transform.position + locationModifier).x < -10 ||
 		    (cam.gameObject.transform.position + locationModifier).y > 10 ||

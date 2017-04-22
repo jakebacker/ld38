@@ -22,6 +22,10 @@ public class Bacterium : MonoBehaviour {
 				size = 1.0;
 				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Diplococci");
 				break;
+			case BacteriumType.BACILLUS:
+				size = 0.3;
+				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Bacillus");
+				break;
 		}
 
 		if (Values.micrometers - size < 0.0)
@@ -34,6 +38,13 @@ public class Bacterium : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (this.tag == "Bacteria") {
+			transform.position += new Vector3(0.01f, 0.0f, 0.0f);
+		}
+	}
+
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		Debug.Log("Collided with: " + coll.gameObject.name);
 	}
 }

@@ -1,66 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WorldController : MonoBehaviour {
 
-	Camera cam;
 	public static CircleCollider2D petriColl;
+
+	static AudioSource spawnSound;
 
 	// Use this for initialization
 	void Start () {
-		cam = Camera.main;
 		petriColl = GameObject.Find("PetriDish").GetComponentInChildren<CircleCollider2D>();
+		spawnSound = this.gameObject.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float axis = -Input.GetAxisRaw("MouseScrollWheel");
-		if (cam.orthographicSize + axis > 0 && cam.orthographicSize + axis <= 20) {
-			cam.orthographicSize += axis;
-		}
+		
+	}
 
-		Vector3 locationModifier = new Vector3(0, 0, 0);
+	public static void SpawnBacteria(BacteriumType type, Vector3 position) {
+		if (!PlayerController.isDead)
+		{
+			spawnSound.Play();
+			GameObject bacteria = Instantiate(Resources.Load<GameObject>("prefabs/Bacteria"));
+			Bacterium bacteriaScript = bacteria.GetComponent<Bacterium>();
 
-		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			locationModifier = new Vector3(0, 2, 0);
-		}
-		if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			locationModifier = new Vector3(0, -2, 0);
-		}
-		if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			locationModifier = new Vector3(-2, 0, 0);
-		}
-		if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			locationModifier = new Vector3(2, 0, 0);
-		}
-
-		if (Application.isEditor || Debug.isDebugBuild)
-		{
-			if (Input.GetKeyDown(KeyCode.C)) // Cheat
-			{
-				Values.bacteriaPower += 100.0;
-				Values.micrometers += 100.0;
-			}
-		}
-
-		if (!((cam.gameObject.transform.position + locationModifier).x > 6 ||
-		    (cam.gameObject.transform.position + locationModifier).x < -6 ||
-		    (cam.gameObject.transform.position + locationModifier).y > 6 ||
-			(cam.gameObject.transform.position + locationModifier).y < -6))
-		{
-			cam.gameObject.transform.position += locationModifier;
+			bacteriaScript.gameObject.transform.position = position;
+			bacteriaScript.type = type;
 		}
 	}
 
 	public static void SpawnBacteria(BacteriumType type) {
-		GameObject bacteria = Instantiate(Resources.Load<GameObject>("prefabs/Bacteria"));
-		Bacterium bacteriaScript = bacteria.GetComponent<Bacterium>();
+		SpawnBacteria(type, new Vector3(0, 0, 0));
+	}
 
-		bacteriaScript.type = type;
+	public static void ReloadScene() {
+		SceneManager.LoadScene("_SCENE");
 	}
 }

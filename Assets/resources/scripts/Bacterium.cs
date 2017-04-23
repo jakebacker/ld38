@@ -111,11 +111,18 @@ public class Bacterium : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (this.gameObject.name != "OriginalBacteria")
+
+		// Bring up a bunch of info and buttons to upgrade/kill
+
+		UIController.ShowUpgradeButtons(this);
+		UIController.ShowRemoveButton(this);
+		UIBacteriaRotater.SetSprite(this.type);
+
+		/*if (this.gameObject.name != "OriginalBacteria")
 		{
 			Values.micrometers += size;
 			Destroy(this.gameObject);
-		}
+		}*/
 	}
 
 	IEnumerator GeneratePower() {

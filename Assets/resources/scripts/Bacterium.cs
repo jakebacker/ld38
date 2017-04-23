@@ -33,18 +33,46 @@ public class Bacterium : MonoBehaviour {
 				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Coccus");
 				break;
 			case BacteriumType.DIPLOCOCCI:
-				size = 1.0;
-				cost = 5.4;
-				power = 0.25;
-				speed = 0.5f;
+				size = BacteriaData.DIPLOCOCCI_SIZE;
+				cost = BacteriaData.DIPLOCOCCI_COST;
+				power = BacteriaData.DIPLOCOCCI_POWER;
+				speed = BacteriaData.DIPLOCOCCI_SPEED;
 				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Diplococci");
 				break;
+			case BacteriumType.TETRAD:
+				size = BacteriaData.TETRAD_SIZE;
+				cost = BacteriaData.TETRAD_COST;
+				power = BacteriaData.TETRAD_POWER;
+				speed = BacteriaData.TETRAD_SPEED;
+				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Tetrad");
+				break;
 			case BacteriumType.BACILLUS:
-				size = 0.3;
-				cost = 6.0;
-				power = 0.3;
-				speed = 1.1f;
+				size = BacteriaData.BACILLUS_SIZE;
+				cost = BacteriaData.BACILLUS_COST;
+				power = BacteriaData.BACILLUS_POWER;
+				speed = BacteriaData.BACILLUS_SPEED;
 				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Bacillus");
+				break;
+			case BacteriumType.DIPLOBACILLI:
+				size = BacteriaData.DIPLOBACILLI_SIZE;
+				cost = BacteriaData.DIPLOBACILLI_COST;
+				power = BacteriaData.DIPLOBACILLI_POWER;
+				speed = BacteriaData.DIPLOBACILLI_SPEED;
+				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Diplobacilli");
+				break;
+			case BacteriumType.PALISADES:
+				size = BacteriaData.PALISADES_SIZE;
+				cost = BacteriaData.PALISADES_COST;
+				power = BacteriaData.PALISADES_POWER;
+				speed = BacteriaData.PALISADES_SPEED;
+				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Palisades");
+				break;
+			case BacteriumType.STREPTOBACILLI:
+				size = BacteriaData.STREPTOBACILLI_SIZE;
+				cost = BacteriaData.STREPTOBACILLI_COST;
+				power = BacteriaData.STREPTOBACILLI_POWER;
+				speed = BacteriaData.STREPTOBACILLI_SPEED;
+				spriteRenderer.sprite = Resources.Load<Sprite>("sprites/Streptobacilli");
 				break;
 		}
 
@@ -83,7 +111,11 @@ public class Bacterium : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		Debug.Log("Mouse Down!");
+		if (this.gameObject.name != "OriginalBacteria")
+		{
+			Values.micrometers += size;
+			Destroy(this.gameObject);
+		}
 	}
 
 	IEnumerator GeneratePower() {

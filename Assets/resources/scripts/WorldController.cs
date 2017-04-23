@@ -16,7 +16,7 @@ public class WorldController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float axis = -Input.GetAxisRaw("MouseScrollWheel");
-		if (cam.orthographicSize + axis > 0 && cam.orthographicSize + axis <= 30) {
+		if (cam.orthographicSize + axis > 0 && cam.orthographicSize + axis <= 20) {
 			cam.orthographicSize += axis;
 		}
 
@@ -48,10 +48,10 @@ public class WorldController : MonoBehaviour {
 			}
 		}
 
-		if (!((cam.gameObject.transform.position + locationModifier).x > 10 ||
-		    (cam.gameObject.transform.position + locationModifier).x < -10 ||
-		    (cam.gameObject.transform.position + locationModifier).y > 10 ||
-			(cam.gameObject.transform.position + locationModifier).y < -10))
+		if (!((cam.gameObject.transform.position + locationModifier).x > 6 ||
+		    (cam.gameObject.transform.position + locationModifier).x < -6 ||
+		    (cam.gameObject.transform.position + locationModifier).y > 6 ||
+			(cam.gameObject.transform.position + locationModifier).y < -6))
 		{
 			cam.gameObject.transform.position += locationModifier;
 		}

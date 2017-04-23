@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour {
 		{
 			AddButton(b);
 		}
+		descriptionParent.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -76,9 +77,38 @@ public class UIController : MonoBehaviour {
 		{
 			description.text = 
 				"Size: " + BacteriaData.BACILLUS_SIZE + "μm\n" +
-				"Cost: " + BacteriaData.BACILLUS_COST + "bp\n" +
-				"Power: " + BacteriaData.BACILLUS_POWER + "bpps\n" +
-				"Speed: " + BacteriaData.BACILLUS_SPEED;
+			"Cost: " + BacteriaData.BACILLUS_COST + "bp\n" +
+			"Power: " + BacteriaData.BACILLUS_POWER + "bpps\n" +
+			"Speed: " + BacteriaData.BACILLUS_SPEED;
+		}
+		else if (type.type == BacteriumType.TETRAD)
+		{
+			description.text = 
+				"Size: " + BacteriaData.TETRAD_SIZE + "μm\n" +
+				"Cost: " + BacteriaData.TETRAD_COST + "bp\n" +
+				"Power: " + BacteriaData.TETRAD_POWER + "bpps\n" +
+				"Speed: " + BacteriaData.TETRAD_SPEED;
+		} else if (type.type == BacteriumType.DIPLOBACILLI)
+		{
+			description.text = 
+				"Size: " + BacteriaData.DIPLOBACILLI_SIZE + "μm\n" +
+				"Cost: " + BacteriaData.DIPLOBACILLI_COST + "bp\n" +
+				"Power: " + BacteriaData.DIPLOBACILLI_POWER + "bpps\n" +
+				"Speed: " + BacteriaData.DIPLOBACILLI_SPEED;
+		} else if (type.type == BacteriumType.PALISADES)
+		{
+			description.text = 
+				"Size: " + BacteriaData.PALISADES_SIZE + "μm\n" +
+				"Cost: " + BacteriaData.PALISADES_COST + "bp\n" +
+				"Power: " + BacteriaData.PALISADES_POWER + "bpps\n" +
+				"Speed: " + BacteriaData.PALISADES_SPEED;
+		} else if (type.type == BacteriumType.STREPTOBACILLI)
+		{
+			description.text = 
+				"Size: " + BacteriaData.STREPTOBACILLI_SIZE + "μm\n" +
+				"Cost: " + BacteriaData.STREPTOBACILLI_COST + "bp\n" +
+				"Power: " + BacteriaData.STREPTOBACILLI_POWER + "bpps\n" +
+				"Speed: " + BacteriaData.STREPTOBACILLI_SPEED;
 		}
 		descriptionParent.SetActive(true);
 	}

@@ -8,7 +8,6 @@ public enum BacteriumType
 	STREPTOCOCCI,
 	ENCAP_DIPLOCOCCI,
 	TETRAD,
-	SARCINA,
 	STAPHYLOCOCCI,
 
 	// Bacilli
